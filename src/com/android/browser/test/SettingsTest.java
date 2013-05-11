@@ -682,7 +682,7 @@ public class SettingsTest extends ActivityInstrumentationTestCase2 {
   
 	public void tearDown()throws Exception{
 		try {
-			//solo.finalize();
+			solo.finalize();
 			solo.finishOpenedActivities();
 		} catch (Throwable e) {
 			e.printStackTrace();
