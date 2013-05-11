@@ -685,7 +685,7 @@ public class SettingsTest extends ActivityInstrumentationTestCase2 {
 			solo.finalize();
 			solo.finishOpenedActivities();
 		} catch (Throwable e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		//this.getActivity().finish();
 		super.tearDown();
