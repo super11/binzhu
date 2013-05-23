@@ -3,7 +3,8 @@ package com.android.browser.test;
 import java.util.ArrayList;
 import android.os.SystemClock;
 import android.util.Log;
-import android.webkit.WebView;
+import android.webkit.*;
+import android.widget.EditText;
 
 /**
  * Contains TextView related methods. Examples are:
@@ -16,6 +17,7 @@ import android.webkit.WebView;
 class WebElementCreator {
 
 	private ArrayList<WebElement> webElements;
+	private ViewFetcher viewFetcher;//add by zhubin,add view fetcher.
 	private Sleeper sleeper;
 	private boolean isFinished = false;
 
@@ -25,9 +27,10 @@ class WebElementCreator {
 	 * @param sleeper the {@code Sleeper} instance
 	 * 
 	 */
-
-	public WebElementCreator(Sleeper sleeper){
+	//edit by zhu bin,add view fether in webcreator
+	public WebElementCreator(Sleeper sleeper,ViewFetcher viewFetcher){
 		this.sleeper = sleeper;
+		this.viewFetcher = viewFetcher;
 		webElements = new ArrayList<WebElement>();
 	}
 
@@ -102,9 +105,14 @@ class WebElementCreator {
 		float scale = webView.getScale();
 		int[] locationOfWebViewXY = new int[2];
 		webView.getLocationOnScreen(locationOfWebViewXY);
-
+		final ArrayList<EditText> inputUrlZone = viewFetcher.getCurrentViews(EditText.class);//add by zhu bin, add the url input zone height.
+		int[] urlZone = new int[2];
+		inputUrlZone.get(0).getLocationOnScreen(urlZone);
+		Log.e(urlZone[1]+""+urlZone[0]+"","urlzone");
+		Log.e(inputUrlZone.get(0).getHeight()+"","urlheight");
+		Log.e(locationOfWebViewXY[0]+""+locationOfWebViewXY[1]+"", "url");
 		int locationX = (int) (locationOfWebViewXY[0] + (x + (Math.floor(width / 2))) * scale);
-		int locationY = (int) (locationOfWebViewXY[1] + (y + (Math.floor(height / 2))) * scale);
+		int locationY = (int) (locationOfWebViewXY[1] + (y + (Math.floor(height / 2))) * scale)+urlZone[1]+inputUrlZone.get(0).getHeight()-locationOfWebViewXY[1];//edit by zhubin to modify the screen size to fit our phone.
 
 		webElement.setLocationX(locationX);
 		webElement.setLocationY(locationY);

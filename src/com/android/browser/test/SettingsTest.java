@@ -78,13 +78,22 @@ public class SettingsTest extends ActivityInstrumentationTestCase2 {
 
 	}
    public void testAlertButton() throws Exception{
-	    webview.loadUrl("http://123.71.192.55:8001/Browser/DOM/anchor/attribute.html");
+	    webview.loadUrl("http://123.71.192.55:8001/Browser/JavaScripts/basic.html");
 	    solo.sleep(3000);
-	    solo.clickOnWebElement(new By.TagName("INPUT"));
-	    boolean actual_result=solo.waitForText("Yahoo");
+	    //solo.clickOnWebElement(new By.TagName("INPUT"));
+	    //boolean actual_result=solo.waitForText("Yahoo");
+	    solo.clickOnText("Write HTML tags with JavaScript");
 	    solo.sleep(2000);
-		assertEquals("Sohu doesn't displayed", true, actual_result);
+		//assertEquals("Sohu doesn't displayed", true, actual_result);
 		solo.sendKey(KeyEvent.KEYCODE_BACK);
+		webview.loadUrl("http://123.71.192.55:8001/Browser/DOM/anchor/attribute.html");
+		solo.sleep(3000);
+		solo.clickOnWebElement(new By.TagName("INPUT"));
+		solo.sleep(2000);
+		//solo.clickOnText("Sohu");
+		solo.sleep(2000);
+		solo.sleep(2000);
+		
 		}
    public void testDomWriteText() throws Exception{
 	   webview.loadUrl("http://123.71.192.55:8001/Browser/DOM/document/write_text.html");

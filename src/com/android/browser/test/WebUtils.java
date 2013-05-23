@@ -42,7 +42,7 @@ class WebUtils {
 		this.inst = instrumentation;
 		this.activityUtils = activityUtils;
 		this.viewFetcher = viewFetcher;
-		webElementCreator = new WebElementCreator(sleeper);
+		webElementCreator = new WebElementCreator(sleeper,viewFetcher);//edit by zhuin add view fether to webcreator.
 		robotiumWebCLient = new RobotiumWebClient(instrumentation, webElementCreator);
 	}
 
@@ -218,6 +218,7 @@ class WebUtils {
 
 	private boolean executeJavaScriptFunction(final String function){
 		final WebView webView = viewFetcher.getFreshestView(viewFetcher.getCurrentViews(WebView.class));
+		
 
 		if(webView == null){
 			return false;

@@ -74,7 +74,7 @@ public class WebElement {
 	 */
 
 	public void setLocationY(int locationY){
-		this.locationY = locationY+80;
+		this.locationY = locationY;
 	}
 
 	/**
