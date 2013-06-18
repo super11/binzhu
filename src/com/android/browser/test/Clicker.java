@@ -27,7 +27,7 @@ import android.widget.TextView;
  */
 
 class Clicker {
-
+gg
 	private final String LOG_TAG = "Robotium";
 	private final ActivityUtils activityUtils;
 	private final ViewFetcher viewFetcher;
